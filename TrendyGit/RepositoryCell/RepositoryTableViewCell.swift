@@ -10,7 +10,7 @@ import UIKit
 
 class RepositoryTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var repositoryName: UILabel!
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var numberOfStars: UILabel!
     
@@ -24,6 +24,11 @@ class RepositoryTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setRepositoryData(repository: Repository) {
+        self.repositoryName?.text = repository.name
+        self.numberOfStars?.text = String(repository.stars)
     }
     
 }

@@ -20,6 +20,7 @@
 		1B630FEE26ACA22F00CFAD43 /* RepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B630FEC26ACA22F00CFAD43 /* RepositoryDetailViewController.swift */; };
 		1B630FEF26ACA22F00CFAD43 /* RepositoryDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B630FED26ACA22F00CFAD43 /* RepositoryDetailViewController.xib */; };
 		1B630FF126ACA25400CFAD43 /* RepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B630FF026ACA25400CFAD43 /* RepositoryDetailViewModel.swift */; };
+		7E8A5DCE51D3B21906815B33 /* Pods_TrendyGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB1C4A80EC1E498932A7A90A /* Pods_TrendyGit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,9 @@
 		1B630FEC26ACA22F00CFAD43 /* RepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		1B630FED26ACA22F00CFAD43 /* RepositoryDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryDetailViewController.xib; sourceTree = "<group>"; };
 		1B630FF026ACA25400CFAD43 /* RepositoryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailViewModel.swift; sourceTree = "<group>"; };
+		1F9C2F6FC5F660940C63823E /* Pods-TrendyGit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrendyGit.release.xcconfig"; path = "Target Support Files/Pods-TrendyGit/Pods-TrendyGit.release.xcconfig"; sourceTree = "<group>"; };
+		7D8152ACA423A7CE84245412 /* Pods-TrendyGit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrendyGit.debug.xcconfig"; path = "Target Support Files/Pods-TrendyGit/Pods-TrendyGit.debug.xcconfig"; sourceTree = "<group>"; };
+		BB1C4A80EC1E498932A7A90A /* Pods_TrendyGit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TrendyGit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E8A5DCE51D3B21906815B33 /* Pods_TrendyGit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +61,8 @@
 			children = (
 				1B630FA526AC829500CFAD43 /* TrendyGit */,
 				1B630FA426AC829500CFAD43 /* Products */,
+				35DF8FDC469FAF27D2393E55 /* Pods */,
+				4013E86BE77B5A62B479C10F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,6 +127,24 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		35DF8FDC469FAF27D2393E55 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7D8152ACA423A7CE84245412 /* Pods-TrendyGit.debug.xcconfig */,
+				1F9C2F6FC5F660940C63823E /* Pods-TrendyGit.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		4013E86BE77B5A62B479C10F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB1C4A80EC1E498932A7A90A /* Pods_TrendyGit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -127,9 +152,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B630FB726AC829900CFAD43 /* Build configuration list for PBXNativeTarget "TrendyGit" */;
 			buildPhases = (
+				0A6569B4CD499A31E6D396B6 /* [CP] Check Pods Manifest.lock */,
 				1B630F9F26AC829500CFAD43 /* Sources */,
 				1B630FA026AC829500CFAD43 /* Frameworks */,
 				1B630FA126AC829500CFAD43 /* Resources */,
+				C2AF9312178F2E13DA27B65E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -187,6 +214,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A6569B4CD499A31E6D396B6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TrendyGit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2AF9312178F2E13DA27B65E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrendyGit/Pods-TrendyGit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TrendyGit/Pods-TrendyGit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TrendyGit/Pods-TrendyGit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1B630F9F26AC829500CFAD43 /* Sources */ = {
@@ -342,6 +411,7 @@
 		};
 		1B630FB826AC829900CFAD43 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D8152ACA423A7CE84245412 /* Pods-TrendyGit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -360,6 +430,7 @@
 		};
 		1B630FB926AC829900CFAD43 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F9C2F6FC5F660940C63823E /* Pods-TrendyGit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

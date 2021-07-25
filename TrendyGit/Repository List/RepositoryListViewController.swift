@@ -19,10 +19,19 @@ class RepositoryListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        repositoryTableView.register(RepositoryTableViewCell.self, forCellReuseIdentifier: REPOSITORY_CELL_IDENTIFIER)
+        let repositoryCell = UINib(nibName: "RepositoryTableViewCell", bundle: nil)
+        repositoryTableView.register(repositoryCell, forCellReuseIdentifier: REPOSITORY_CELL_IDENTIFIER)
         
         repositoryTableView.delegate = self
         repositoryTableView.dataSource = self
+        
+        configureTableView()
+    }
+    
+    //TODO: Declare configureTableView here:
+    func configureTableView() {
+        repositoryTableView.rowHeight = UITableView.automaticDimension
+        repositoryTableView.estimatedRowHeight = 120.0
     }
 
 
@@ -35,12 +44,18 @@ extension RepositoryListViewController: UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: REPOSITORY_CELL_IDENTIFIER) as! RepositoryTableViewCell
-        let product = repositoryViewModel.repositoryArray[indexPath.row]
-//        cell.productName.text = product.name
-//        cell.productQuantity.text = "\(product.quantity)"
-        cell.textLabel?.text = product.name
+        let cell: RepositoryTableViewCell = tableView.dequeueReusableCell(withIdentifier: REPOSITORY_CELL_IDENTIFIER, for: indexPath) as! RepositoryTableViewCell
+        let repository = repositoryViewModel.repositoryArray[indexPath.row]
+
+        cell.setRepositoryData(repository: repository)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let repositoryDetailViewController = self.storyboard!.instantiateViewController(withIdentifier: "RepositoryDetailViewController") as! RepositoryDetailViewController
+        self.navigationController!.pushViewController(repositoryDetailViewController, animated: true)
     }
     
 }
