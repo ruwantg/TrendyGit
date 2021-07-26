@@ -8,23 +8,36 @@
 
 import UIKit
 
-class RepositoryDetailViewController: UIViewController {
+class RepositoryDetailViewController: UIViewController, UIGestureRecognizerDelegate {
+    
+    @IBOutlet weak var fullName: UILabel!
+    @IBOutlet weak var repositoryDescription: UILabel!
+    
+    
+    var repository: Repository?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setTitleBar()
+        setUIView()
+        
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func setTitleBar () {
+        self.title = repository?.name
+        let backBTN = UIBarButtonItem(image: UIImage(named: "back"),
+                                      style: .plain,
+                                      target: navigationController,
+                                      action: #selector(UINavigationController.popViewController(animated:)))
+        navigationItem.leftBarButtonItem = backBTN
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
-    */
+    
+    func setUIView () {
+        fullName.text = repository?.fullName
+        repositoryDescription.text = repository?.desc
+        
+    }
 
 }

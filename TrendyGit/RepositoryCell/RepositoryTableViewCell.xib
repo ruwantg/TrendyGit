@@ -19,16 +19,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="uw6-HX-5QX">
-                        <rect key="frame" x="16" y="10" width="41.5" height="56"/>
+                        <rect key="frame" x="16" y="10" width="224" height="56"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pU-IX-ZiR">
-                                <rect key="frame" x="0.0" y="0.0" width="41.5" height="32.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="224" height="32.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ese-2f-DdN">
-                                <rect key="frame" x="0.0" y="41.5" width="41.5" height="14.5"/>
+                                <rect key="frame" x="0.0" y="41.5" width="224" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -56,6 +56,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="ApV-iB-O4X" secondAttribute="trailing" constant="10" id="5le-Pf-8hU"/>
+                    <constraint firstItem="ApV-iB-O4X" firstAttribute="leading" secondItem="uw6-HX-5QX" secondAttribute="trailing" constant="10" id="7Km-AA-ZRS"/>
                     <constraint firstItem="ApV-iB-O4X" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DUL-DS-IPy"/>
                     <constraint firstItem="uw6-HX-5QX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EPj-Ab-a2R"/>
                     <constraint firstItem="uw6-HX-5QX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="TpS-HZ-JGT"/>
@@ -65,8 +66,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="desc" destination="Ese-2f-DdN" id="oc2-1B-Xfo"/>
                 <outlet property="numberOfStars" destination="0Sh-7l-Wxm" id="6gu-Kv-Mhg"/>
+                <outlet property="repositoryDescription" destination="Ese-2f-DdN" id="oc2-1B-Xfo"/>
                 <outlet property="repositoryName" destination="4pU-IX-ZiR" id="QPk-9r-XWb"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="105.13392857142857"/>

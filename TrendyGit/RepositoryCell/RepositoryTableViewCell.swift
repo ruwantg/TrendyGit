@@ -11,7 +11,7 @@ import UIKit
 class RepositoryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var repositoryName: UILabel!
-    @IBOutlet weak var desc: UILabel!
+    @IBOutlet weak var repositoryDescription: UILabel!
     @IBOutlet weak var numberOfStars: UILabel!
     
 
@@ -28,6 +28,7 @@ class RepositoryTableViewCell: UITableViewCell {
     
     func setRepositoryData(repository: Repository) {
         self.repositoryName?.text = repository.name
+        self.repositoryDescription?.text = repository.desc
         self.numberOfStars?.text = String(repository.stars)
     }
     

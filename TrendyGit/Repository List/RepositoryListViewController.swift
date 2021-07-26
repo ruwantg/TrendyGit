@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class RepositoryListViewController: UIViewController {
     
     let REPOSITORY_CELL_IDENTIFIER = "RepositoryCellIdentifier"
+    let REPOSITORY_URL = "https://api.github.com/repositories"
 
     @IBOutlet weak var repositoryTableView: UITableView!
     
-    let repositoryViewModel: RepositoryListViewModel = RepositoryListViewModel()
+    let viewModel: RepositoryListViewModel = RepositoryListViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,8 @@ class RepositoryListViewController: UIViewController {
         repositoryTableView.delegate = self
         repositoryTableView.dataSource = self
         
+        getRepositoryData(url: REPOSITORY_URL)
+        
         configureTableView()
     }
     
@@ -33,19 +38,43 @@ class RepositoryListViewController: UIViewController {
         repositoryTableView.rowHeight = UITableView.automaticDimension
         repositoryTableView.estimatedRowHeight = 120.0
     }
+    
 
+    //MARK: - Networking
+
+    
+    func getRepositoryData(url: String) {
+    
+        Alamofire.request(url, method: .get).responseJSON {
+            response in
+
+            if response.result.isSuccess {
+                print("Success! Got the repository data")
+
+                let repositoryJSON = JSON(response.result.value)
+
+                self.viewModel.updateRepositoryData(json: repositoryJSON)
+                
+                self.repositoryTableView.reloadData()
+
+            } else {
+                print("Error \(response.result.error)")
+//                self.cityLabel.text = "Connection Issues"
+            }
+        }
+    }
 
 }
 
 extension RepositoryListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repositoryViewModel.numberOfRowsInSection()
+        return viewModel.numberOfRowsInSection()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RepositoryTableViewCell = tableView.dequeueReusableCell(withIdentifier: REPOSITORY_CELL_IDENTIFIER, for: indexPath) as! RepositoryTableViewCell
-        let repository = repositoryViewModel.repositoryArray[indexPath.row]
+        let repository = viewModel.repositoryArray[indexPath.row]
 
         cell.setRepositoryData(repository: repository)
         return cell
@@ -55,6 +84,9 @@ extension RepositoryListViewController: UITableViewDelegate, UITableViewDataSour
         tableView.deselectRow(at: indexPath, animated: true)
         
         let repositoryDetailViewController = self.storyboard!.instantiateViewController(withIdentifier: "RepositoryDetailViewController") as! RepositoryDetailViewController
+        
+        repositoryDetailViewController.repository = viewModel.repositoryArray[indexPath.row]
+        
         self.navigationController!.pushViewController(repositoryDetailViewController, animated: true)
     }
     
